@@ -1,0 +1,60 @@
+在web-proxy上：
+10  yum -y install mariadb mariadb-server mariadb-devel
+   11  wget http://ftp.ntu.edu.tw/pub/MySQL/Downloads/MySQL-Proxy/mysql-proxy-0.8.4-linux-el6-x86-64bit.tar.gz
+   12  yum -y install wget
+   13  wget http://ftp.ntu.edu.tw/pub/MySQL/Downloads/MySQL-Proxy/mysql-proxy-0.8.4-linux-el6-x86-64bit.tar.gz
+   14  useradd -r mysql-proxy
+   15  ls
+   16  tar zxf mysql-proxy-0.8.4-linux-el6-x86-64bit.tar.gz 
+   17  ls
+   18  mkdir -p /usr/local/mysql-proxy
+   19  mv mysql-proxy-0.8.4-linux-el6-x86-64bit/* /usr/local/mysql-proxy/
+   20  cd /usr/local/mysql-proxy/
+   21  cd share/
+   22  cd doc/
+   23  ls
+   24  cd mysql-proxy/
+   25  ls
+   26  cd ..
+   27  ls
+   28  cd bin/
+   29  ls
+   30  vi /etc/profile
+   31  source /etc/profile
+   32  mysql-proxy -v
+   33  ps -ef | grep mysql
+   34  mysql-proxy -V
+   35  mysql-proxy --daemon --log-level=debug --user=mysql-proxy --keepalive --log-file=/var/log/mysql-proxy.log --plugins="proxy" --proxy-backend-addresses="192.168.1.18:3306" --proxy-read-only-backend-addresses="192.168.1.19:3306" --proxy-lua-script="/usr/local/mysql-proxy/share/doc/mysql-proxy/rw-splitting.lua" --plugins=admin --admin-username="admin" --admin-password="admin" --admin-lua-script="/usr/local/mysql-proxy/lib/mysql-proxy/lua/admin.lua" 
+   36  ps -ef|grep mysql
+   37  mysql -uadmin -padmin -P4041
+   38  yum -y install mariadb mariadb-server mariadb-devel 
+   39  cd /var/lib/mysql/
+   40  ls
+   41  systemctl start mysql
+   42  systemctl start mariadb
+   43  mysql -uadmin -padmin -P4041
+   44  mysql
+   45  netstat -antlp
+   46  mysql -h192.168.1.17 -uadmin -padmin -P4041
+   47  mysql -uroot -p123456 -P4040
+   48  mysql -h192.168.1.17 -uroot -p123456 -P4040
+   49  mysql -h192.168.1.17 -uadmin -padmin -P4041
+   50  mysql -h192.168.1.17 -uroot -p123456 -P4041
+   51  mysql -h192.168.1.17 -uroot -p123456 -P4040
+   52  systemctl status firewalld.service 
+   53  systemctl stop firewalld.service 
+   54  mysql -h192.168.1.17 -uroot -p123456 -P4040
+   55  mysql -h192.168.1.17 -uroot -p123456 -P4040 -e 'show databases;'
+   56  mysql -h192.168.1.17 -uadmin -padmin -P4041
+   57  mysql -h192.168.1.17 -uroot -p123456 -P4040 -e 'show databases;'
+   58  mysql -h192.168.1.17 -uadmin -padmin -P4041
+   59  history 
+
+select * from backends;
+
+在主，从数据库上：
+mysql> grant all on *.* to root@'%' identified by '123456'; 
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.00 sec)
