@@ -1,0 +1,13 @@
+[root@mysql-proxy mysql]# mysql -h192.168.1.17 -uroot -p123456 -P4040 -e 'show databases;'     #连续刷新多次，直到mysql-proxy,select * from backends 全部为up!
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| dengtao            |
+| lixu               |
+| mysql              |
+| mysql_ab_test      |
+| performance_schema |
+| test               |
+| ultrax             |
++--------------------+
