@@ -1,0 +1,18 @@
+在web-proxy上：
+[root@mysql-proxy mysql]# mysql -h192.168.1.17 -uadmin -padmin -P4041
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1
+Server version: 5.0.99-agent-admin
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> select * from backends;
++-------------+-------------------+---------+------+------+-------------------+
+| backend_ndx | address           | state   | type | uuid | connected_clients |
++-------------+-------------------+---------+------+------+-------------------+
+|           1 | 192.168.1.18:3306 | up      | rw   | NULL |                 0 |
+|           2 | 192.168.1.19:3306 | unknown | ro   | NULL |                 0 |
++-------------+-------------------+---------+------+------+-------------------+
+2 rows in set (0.00 sec)
